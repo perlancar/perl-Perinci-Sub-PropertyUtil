@@ -1,4 +1,4 @@
-package Perinci::Util;
+package Perinci::Sub::PropertyUtil;
 
 use 5.010;
 use strict;
