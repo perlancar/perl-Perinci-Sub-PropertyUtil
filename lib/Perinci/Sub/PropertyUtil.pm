@@ -40,7 +40,7 @@ sub declare_property {
             die "Unknown/unsupported property type: $type";
         }
         $tpp = $ts->[1]{"[merge+]keys"}
-            or die "BUG: Schema structure changed (1)";
+            or die "BUG: Schema structure changed (2)";
         $tpp->{$name}
             and die "Property '$name' is already declared in $type schema";
     }
