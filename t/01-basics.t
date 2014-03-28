@@ -32,7 +32,7 @@ package main;
 use Test::More 0.98;
 use Test::Perinci::Sub::Wrapper qw(test_wrap);
 
-ok;
+ok 1;
 
 DONE_TESTING:
 done_testing;
