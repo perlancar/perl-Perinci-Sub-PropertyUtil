@@ -32,15 +32,7 @@ package main;
 use Test::More 0.98;
 use Test::Perinci::Sub::Wrapper qw(test_wrap);
 
-{
-    my $sub  = sub {};
-    my $meta = {v=>1.1, testprop1=>1};
-    test_wrap(
-        name => 'forbid_tags',
-        wrap_args => {sub => $sub, meta => $meta, forbid_tags=>['tag1']},
-        wrap_status => 412,
-    );
-}
+ok;
 
 DONE_TESTING:
 done_testing;
