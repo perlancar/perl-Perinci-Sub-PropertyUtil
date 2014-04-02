@@ -55,19 +55,23 @@ sub declare_property {
     }
 
     # install wrapper
-    {
-        require Perinci::Sub::Wrapper;
+    if ($args{wrapper} && $INC{"Perinci/Sub/Wrapper.pm"}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
-        if ($args{wrapper}) {
-            *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
-                sub { $args{wrapper}{meta} };
-            *{"Perinci::Sub::Wrapper::handle_$n"} =
-                $args{wrapper}{handler};
-        } else {
-            *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
-                sub { {} };
-        }
+        *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
+            sub { $args{wrapper}{meta} };
+        *{"Perinci::Sub::Wrapper::handle_$n"} =
+            $args{wrapper}{handler};
+    }
+
+    # install cmdline help hook
+    if ($args{cmdline_help} && $INC{"Perinci/CmdLine.pm"}) {
+        no strict 'refs';
+        my $n = $name; $n =~ s!/!__!g;
+        *{"Perinci::CmdLine::help_hookmeta_$n"} =
+            sub { $args{cmdline_help}{meta} };
+        *{"Perinci::CmdLine::help_hook_$n"} =
+            $args{cmdline_help}{handler};
     }
 }
 
