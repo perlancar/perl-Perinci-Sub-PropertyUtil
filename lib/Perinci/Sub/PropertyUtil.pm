@@ -54,7 +54,7 @@ sub declare_property {
         ($bpp // $tpp)->{$name} = $schema;
     }
 
-    # install wrapper
+    # install wrapper handler
     if ($args{wrapper} && $INC{"Perinci/Sub/Wrapper.pm"}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
@@ -64,7 +64,7 @@ sub declare_property {
             $args{wrapper}{handler};
     }
 
-    # install cmdline help hook
+    # install Perinci::CmdLine help handler
     if ($args{cmdline_help} && $INC{"Perinci/CmdLine.pm"}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
@@ -72,6 +72,16 @@ sub declare_property {
             sub { $args{cmdline_help}{meta} };
         *{"Perinci::CmdLine::help_hook_$n"} =
             $args{cmdline_help}{handler};
+    }
+
+    # install Perinci::Sub::To::POD help hook
+    if ($args{pod} && $INC{"Perinci/Sub/To/POD.pm"}) {
+        no strict 'refs';
+        my $n = $name; $n =~ s!/!__!g;
+        *{"Perinci::Sub::To::POD::hookmeta_$n"} =
+            sub { $args{pod}{meta} };
+        *{"Perinci::Sub::To::POD::hook_$n"} =
+            $args{pod}{handler};
     }
 }
 
