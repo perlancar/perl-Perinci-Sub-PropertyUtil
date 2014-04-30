@@ -22,16 +22,23 @@ sub declare_property {
 
     # insert the property's schema into Sah::Schema::Rinci
     {
-        # XXX currently we skip result/*
-        last if $name =~ m!\Aresult/!;
-
         require Sah::Schema::Rinci;
         my $p = $Sah::Schema::Rinci::SCHEMAS{rinci_function}[1]{_prop}
             or die "BUG: Schema structure changed (1)";
-        $p->{$name}
+
+        my $n;
+        if ($name =~ m!\Aresult/(.+)!) {
+            $n = $1;
+            $p = $p->{result}{_prop}
+                or die "BUG: Schema structure changed (2)";
+        } else {
+            $n = $name;
+        }
+
+        $p->{$n}
             and die "Property '$name' is already declared in schema";
         # XXX we haven't injected $schema
-        $p->{$name} = {};
+        $p->{$n} = {};
     }
 
     # install wrapper handler
