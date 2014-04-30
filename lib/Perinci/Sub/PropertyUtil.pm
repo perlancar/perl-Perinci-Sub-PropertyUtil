@@ -42,7 +42,7 @@ sub declare_property {
     }
 
     # install wrapper handler
-    if ($args{wrapper} && $INC{"Perinci/Sub/Wrapper.pm"}) {
+    if ($args{wrapper}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
         *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
@@ -52,7 +52,7 @@ sub declare_property {
     }
 
     # install Perinci::CmdLine help handler
-    if ($args{cmdline_help} && $INC{"Perinci/CmdLine.pm"}) {
+    if ($args{cmdline_help}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
         *{"Perinci::CmdLine::help_hookmeta_$n"} =
@@ -62,7 +62,7 @@ sub declare_property {
     }
 
     # install Perinci::Sub::To::POD help hook
-    if ($args{pod} && $INC{"Perinci/Sub/To/POD.pm"}) {
+    if ($args{pod}) {
         no strict 'refs';
         my $n = $name; $n =~ s!/!__!g;
         *{"Perinci::Sub::To::POD::hookmeta_$n"} =
