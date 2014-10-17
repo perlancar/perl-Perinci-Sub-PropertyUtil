@@ -32,7 +32,7 @@ sub declare_property {
             $n = $1;
             $p = $p->{result}{_prop}
                 or die "BUG: Schema structure changed (2)";
-        } elsif ($name =~ m!\Aarg/\*/(.+)!) {
+        } elsif ($name =~ m!\Aargs/\*/(.+)!) {
             $n = $1;
             $p = $p->{args}{_value_prop}
                 or die "BUG: Schema structure changed (3)";
