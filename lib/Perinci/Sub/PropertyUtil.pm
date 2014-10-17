@@ -1,5 +1,8 @@
 package Perinci::Sub::PropertyUtil;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
@@ -10,15 +13,13 @@ our @EXPORT_OK = qw(
                        declare_property
                );
 
-# VERSION
-
 sub declare_property {
     my %args   = @_;
     my $name   = $args{name}   or die "Please specify property's name";
     my $schema = $args{schema} or die "Please specify property's schema";
     my $type   = $args{type};
 
-    $name =~ m!\A((result)/)?\w+\z! or die "Invalid property name";
+    $name =~ m!\A((result|args/\*)/)?\w+\z! or die "Invalid property name";
 
     # insert the property's schema into Sah::Schema::Rinci
     {
@@ -31,6 +32,10 @@ sub declare_property {
             $n = $1;
             $p = $p->{result}{_prop}
                 or die "BUG: Schema structure changed (2)";
+        } elsif ($name =~ m!\Aarg/\*/(.+)!) {
+            $n = $1;
+            $p = $p->{args}{_value_prop}
+                or die "BUG: Schema structure changed (3)";
         } else {
             $n = $name;
         }
@@ -44,7 +49,7 @@ sub declare_property {
     # install wrapper handler
     if ($args{wrapper}) {
         no strict 'refs';
-        my $n = $name; $n =~ s!/!__!g;
+        my $n = $name; $n =~ s!(/\*)?/!__!g;
         *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
             sub { $args{wrapper}{meta} };
         *{"Perinci::Sub::Wrapper::handle_$n"} =
