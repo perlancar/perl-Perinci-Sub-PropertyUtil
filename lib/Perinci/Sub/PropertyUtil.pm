@@ -49,6 +49,7 @@ sub declare_property {
     # install wrapper handler
     if ($args{wrapper}) {
         no strict 'refs';
+        no warnings 'redefine';
         my $n = $name; $n =~ s!(/\*)?/!__!g;
         *{"Perinci::Sub::Wrapper::handlemeta_$n"} =
             sub { $args{wrapper}{meta} };
@@ -59,6 +60,7 @@ sub declare_property {
     # install Perinci::CmdLine help handler
     if ($args{cmdline_help}) {
         no strict 'refs';
+        no warnings 'redefine';
         my $n = $name; $n =~ s!/!__!g;
         *{"Perinci::CmdLine::help_hookmeta_$n"} =
             sub { $args{cmdline_help}{meta} };
@@ -69,6 +71,7 @@ sub declare_property {
     # install Perinci::Sub::To::POD help hook
     if ($args{pod}) {
         no strict 'refs';
+        no warnings 'redefine';
         my $n = $name; $n =~ s!/!__!g;
         *{"Perinci::Sub::To::POD::hookmeta_$n"} =
             sub { $args{pod}{meta} };
