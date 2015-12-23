@@ -1,5 +1,10 @@
 Revision history for Perinci-Sub-PropertyUtil
 
+0.09    2015-12-23 (PERLANCAR)
+
+	- Add 'no warnings redefine'.
+
+
 0.08    2015-09-04 (PERLANCAR)
 
 	- No functional changes.
