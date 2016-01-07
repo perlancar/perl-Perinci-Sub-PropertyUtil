@@ -1,5 +1,14 @@
 Revision history for Perinci-Sub-PropertyUtil
 
+0.10    2016-01-07 (PERLANCAR)
+
+        - No functional changes.
+
+        - Remove t/01-basics.t and dependency to Test::Perinci::Sub::Wrapper
+          (this module is basically tested via tests in Perinci-Sub-Property-*
+          dists).
+
+
 0.09    2015-12-23 (PERLANCAR)
 
 	- Add 'no warnings redefine'.
