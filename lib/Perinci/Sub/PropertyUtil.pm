@@ -21,21 +21,21 @@ sub declare_property {
 
     $name =~ m!\A((result|args/\*)/)?\w+\z! or die "Invalid property name";
 
-    # insert the property's schema into Sah::Schema::Rinci
+    # insert the property's schema into Sah::Schema::rinci::function_meta
     {
-        require Sah::Schema::Rinci;
-        my $p = $Sah::Schema::Rinci::SCHEMAS{rinci_function}[1]{_prop}
-            or die "BUG: Schema structure changed (1)";
+        require Sah::Schema::rinci::function_meta;
+        my $p = $Sah::Schema::rinci::function_meta::schema->[1]{_prop}
+            or die "BUG: Schema structure changed (1a)";
 
         my $n;
         if ($name =~ m!\Aresult/(.+)!) {
             $n = $1;
             $p = $p->{result}{_prop}
-                or die "BUG: Schema structure changed (2)";
+                or die "BUG: Schema structure changed (2a)";
         } elsif ($name =~ m!\Aargs/\*/(.+)!) {
             $n = $1;
             $p = $p->{args}{_value_prop}
-                or die "BUG: Schema structure changed (3)";
+                or die "BUG: Schema structure changed (3a)";
         } else {
             $n = $name;
         }
