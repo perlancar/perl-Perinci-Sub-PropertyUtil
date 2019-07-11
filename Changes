@@ -1,10 +1,10 @@
-0.11    2016-05-10 (PERLANCAR)
+0.11    2016-05-10  Released-By: PERLANCAR
 
 	- Update to Sah::Schema::rinci::function_meta which replaces
 	  Sah::Schema::Rinci.
 
 
-0.10    2016-01-07 (PERLANCAR)
+0.10    2016-01-07  Released-By: PERLANCAR
 
         - No functional changes.
 
@@ -13,12 +13,12 @@
           dists).
 
 
-0.09    2015-12-23 (PERLANCAR)
+0.09    2015-12-23  Released-By: PERLANCAR
 
 	- Add 'no warnings redefine'.
 
 
-0.08    2015-09-04 (PERLANCAR)
+0.08    2015-09-04  Released-By: PERLANCAR
 
 	- No functional changes.
 
@@ -27,12 +27,12 @@
 	  requirement.
 
 
-0.07     2014-10-17 (PERLANCAR)
+0.07     2014-10-17  Released-By: PERLANCAR
 
          - Support property in argument specification (args/*/PROP).
 
 
-0.06     2014-04-30 (SHARYANTO)
+0.06     2014-04-30  Released-By: SHARYANTO
 
          - Force install handlers for
            Perinci::{Sub::Wrapper,CmdLine,Sub::To::POD} even though the main
@@ -40,17 +40,17 @@
            Perinci::Sub::Normalize.
 
 
-0.05     2014-04-30 (SHARYANTO)
+0.05     2014-04-30  Released-By: SHARYANTO
 
          - Handle modifying schema for result/* property.
 
 
-0.04     2014-04-28 (SHARYANTO)
+0.04     2014-04-28  Released-By: SHARYANTO
 
          - Use Sah::Schema::Rinci (replaces Rinci::Schema).
 
 
-0.03     2014-04-02 (SHARYANTO)
+0.03     2014-04-02  Released-By: SHARYANTO
 
          [ENHANCEMENTS]
 
@@ -61,7 +61,7 @@
            when generating documentation.
 
 
-0.02     2014-03-28 (SHARYANTO)
+0.02     2014-03-28  Released-By: SHARYANTO
 
          [ENHANCEMENTS]
 
@@ -72,7 +72,7 @@
          - Add test from periwrap to avoid circular dep [RT#82712].
 
 
-0.01     2012-12-21 (SHARYANTO)
+0.01     2012-12-21  Released-By: SHARYANTO
 
          - First release (on apocalypse day). Split from Perinci-Util to avoid
            circular dependency [RT#81999].
